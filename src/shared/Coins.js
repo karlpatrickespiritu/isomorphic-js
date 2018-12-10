@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 
 class Coins extends Component {
   constructor(props) {
@@ -34,18 +35,23 @@ class Coins extends Component {
   render() {
     const { loading, coins } = this.state;
 
-    console.log(coins);
-
     if (loading) {
       return <p>LOADING</p>
     }
 
     return (
       <ul style={{display: 'flex', flexWrap: 'wrap'}}>
-        {coins.map(({ name, symbol, circulating_supply, total_supply, cmc_rank, quote }) => (
+        {coins.map(({ name, symbol, circulating_supply, total_supply, cmc_rank, quote, slug }) => (
           <li key={name} style={{margin: 30}}>
             <ul>
-              <li>Rank {cmc_rank}: {name} ({symbol})</li>
+              <li>
+                <Link to={`/coin-info/` + symbol}>
+                  <strong>Rank {cmc_rank}: {name} ({symbol})</strong>
+                </Link>
+              </li>
+              <li>
+                <a href={`https://coinmarketcap.com/currencies/` + slug} target={"_blank"}>Coinmarketcap Link</a>
+              </li>
               <li>Circulating Supply: {circulating_supply}</li>
               <li>Total Supply: {total_supply}</li>
               <li>24hr volume: {quote.USD.volume_24h}</li>

@@ -8,6 +8,9 @@ export default function Navbar () {
   }, {
     name: 'All Coins',
     param: 'all'
+  }, {
+    name: 'Exchanges',
+    param: 'exchanges'
   }];
 
   return (
