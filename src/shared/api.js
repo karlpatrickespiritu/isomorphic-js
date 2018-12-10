@@ -1,4 +1,5 @@
 import requestPromise from 'request-promise';
+import coinsMock from '../shared/mock/coins';
 
 const API_KEY = 'a0872a16-370d-4eba-bd33-206fa57992bf';
 
@@ -19,10 +20,11 @@ export function fetchCoins() {
       gzip: true
     };
 
-    requestPromise(requestOptions).then(response => {
-      resolve(response.data);
-    }).catch((err) => {
-      reject(err);
-    });
+    resolve(coinsMock);
+    // requestPromise(requestOptions).then(response => {
+    //   resolve(response.data);
+    // }).catch((err) => {
+    //   reject(err);
+    // });
   });
 }
