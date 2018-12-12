@@ -1,7 +1,6 @@
 import Home from './Home'
 import Coins from './Coins'
-import CoinInfo from './CoinInfo'
-import { fetchCoins, fetchCoinMetaData } from './api'
+import { fetchCoins } from './api'
 
 const routes =  [
   {
@@ -13,11 +12,6 @@ const routes =  [
     path: '/all',
     component: Coins,
     fetchInitialData: () => fetchCoins()
-  },
-  {
-    path: '/coin-info/:id',
-    component: CoinInfo,
-    fetchInitialData: (path) => fetchCoinMetaData(path.split('/').pop())
   }
 ];
 
